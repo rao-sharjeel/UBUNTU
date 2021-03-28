@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include <pthread.h>
+
+void * f1(void * u)
+{
+printf("\n1st thread \n");
+int *num = (int *) u;
+*num = (*num/2)-1 ;
+printf("the value is %d \n", *num);
+}
+
+void * f2(void * u)
+{
+printf("\n2nd thread \n");
+
+int *num =(int *) u;
+*num = (*num/2) * (*num);
+printf("the value is %d \n", *num);
+}
+
+void * f3(void * u)
+{
+printf("\n3rd thread\n");
+int *num =(int *) u;
+*num = ((*num *2) / (*num));
+printf("the value is %d \n", *num);
+}
+
+void * f4(void * u)
+{
+printf("\n4th thread \n");
+int *num =(int *) u;
+*num = 2;
+printf("the value is %d \n", *num);
+}
+
+
+int main()
+{
+int num = 10, sum;
+int n1, n2, n3, n4;
+n1 = n2 = n3 = n4 = num;
+
+pthread_t tid;
+pthread_create(&tid,NULL,&f1,&n1);
+pthread_join(tid,NULL);
+
+pthread_t tid2;
+pthread_create(&tid2,NULL,&f2,&n2);
+pthread_join(tid2,NULL);
+
+pthread_t tid3;
+pthread_create(&tid3,NULL,&f3,&n3);
+pthread_join(tid3,NULL);
+
+pthread_t tid4;
+pthread_create(&tid4,NULL,&f4,&n4);
+pthread_join(tid4,NULL);
+
+sum = n1+n2+n3+n4;
+printf("\n sum = %d \n", sum);
+
+printf("\n n1 = %d, n2 = %d, n3 = %d, n4 = %d, \n", n1, n2 , n3 , n4);
+
+return 0;
+}
