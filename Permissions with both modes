@@ -1,0 +1,37 @@
+
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ ls -al                                                                130 ⨯
+total 8
+drwxr-xr-x 2 killerwhale killerwhale 4096 Apr  6 06:54 .
+drwxr-xr-x 3 killerwhale killerwhale 4096 Apr  6 06:40 ..
+-rw-r--r-- 1 killerwhale killerwhale    0 Apr  6 06:54 per.txt
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ chmod 621 per.txt
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ ls -al
+total 8
+drwxr-xr-x 2 killerwhale killerwhale 4096 Apr  6 06:54 .
+drwxr-xr-x 3 killerwhale killerwhale 4096 Apr  6 06:40 ..
+-rw--w---x 1 killerwhale killerwhale    0 Apr  6 06:54 per.txt
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ chmod u+r per.txt
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ chmod g+r per.txt
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ chmod g-w per.txt
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ chmod o+x per.txt 
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ ls -al
+total 8
+drwxr-xr-x 2 killerwhale killerwhale 4096 Apr  6 06:54 .
+drwxr-xr-x 3 killerwhale killerwhale 4096 Apr  6 06:40 ..
+-rw-r----x 1 killerwhale killerwhale    0 Apr  6 06:54 per.txt
