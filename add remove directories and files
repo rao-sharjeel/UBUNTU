@@ -1,0 +1,100 @@
+┌──(killerwhale㉿killerWhale)-[~]
+└─$ pwd
+/home/killerwhale
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~]
+└─$ cd Downloads  
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads]
+└─$ mkdir semester
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads]
+└─$ mkdir semester/os
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads]
+└─$ mkdir semester/os/lab
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads]
+└─$ cd semester/os/lab    
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester/os/lab]
+└─$ cat > hello.txt   
+this is a text file.^C
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester/os/lab]
+└─$ cd                                                                    130 ⨯
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~]
+└─$ cd
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~]
+└─$ cd semeste        
+cd: no such file or directory: semeste
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~]
+└─$ cd semester                                                             1 ⨯
+cd: no such file or directory: semester
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~]
+└─$ cd ..                                                                   1 ⨯
+                                                                                
+┌──(killerwhale㉿killerWhale)-[/home]
+└─$ cd Do       
+cd: no such file or directory: Do
+                                                                                
+┌──(killerwhale㉿killerWhale)-[/home]
+└─$ cd Downloads                                                            1 ⨯
+cd: no such file or directory: Downloads
+                                                                                
+┌──(killerwhale㉿killerWhale)-[/home]
+└─$ cd KillerWhale                                                          1 ⨯
+cd: no such file or directory: KillerWhale
+                                                                                
+┌──(killerwhale㉿killerWhale)-[/home]
+└─$ ls                                                                      1 ⨯
+killerwhale
+                                                                                
+┌──(killerwhale㉿killerWhale)-[/home]
+└─$ cd killerwhale
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~]
+└─$ cd Downloads
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads]
+└─$ cd semester 
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ rmdir -r lab
+rmdir: invalid option -- 'r'
+Try 'rmdir --help' for more information.
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$                                                                         1 ⨯
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$                                                                         1 ⨯
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$                                                                         1 ⨯
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$                                                                         1 ⨯
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$                                                                         1 ⨯
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$                                                                         1 ⨯
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$                                                                         1 ⨯
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ rm -r os                                                                1 ⨯
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ ls
+                                                                                
+┌──(killerwhale㉿killerWhale)-[~/Downloads/semester]
+└─$ cat > per.txt  
+this is a file for question 1.3^C         
