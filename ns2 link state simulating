@@ -1,0 +1,133 @@
+set ns [new Simulator]
+
+$ns rtproto LS
+
+set nf [open practice-nam.nam w]
+set tf [open practice-tracefile.tr w]
+
+$ns namtrace-all $nf
+$ns trace-all $tf
+
+proc finish {} {
+	global ns nf tf
+	$ns flush-trace
+	close $nf
+	close $tf
+	exec nam practice-nam.nam &
+	exit 0
+}
+
+
+
+set n0 [$ns node]
+set n1 [$ns node]
+set n2 [$ns node]
+set n3 [$ns node]
+set n4 [$ns node]
+set n5 [$ns node]
+set n6 [$ns node]
+
+$n0 label s1
+$n1 label s2
+$n3 label D1
+$n4 label D2
+$n6 label new-node
+
+$n0 label-color green
+$n1 label-color blue
+$n3 label-color red
+$n4 label-color orange
+
+$ns duplex-link $n2 $n0 10.0Mb 15ms RED
+$ns duplex-link $n2 $n1 10.0Mb 15ms  RED
+$ns duplex-link $n5 $n3 12Mb 15ms RED
+$ns duplex-link $n5 $n4 12Mb 15ms RED
+$ns duplex-link $n5 $n2 10Mb 20ms RED
+$ns duplex-link $n5 $n6 10Mb 20ms RED
+$ns duplex-link $n2 $n6 10Mb 20ms RED
+
+$ns duplex-link-op $n2 $n0 orient left-up
+$ns duplex-link-op $n2 $n1 orient left-down
+$ns duplex-link-op $n5 $n3 orient right-up
+$ns duplex-link-op $n5 $n4 orient right-down
+$ns duplex-link-op $n5 $n2 orient left
+$ns duplex-link-op $n5 $n6 orient up-left
+$ns duplex-link-op $n2 $n6 orient up-right
+
+$ns cost $n2 $n0 1
+$ns cost $n2 $n1 1
+$ns cost $n5 $n3 1
+$ns cost $n5 $n4 1
+$ns cost $n5 $n2 200
+$ns cost $n5 $n6 1
+$ns cost $n2 $n6 1
+
+$ns duplex-link-op $n5 $n3 color "purple"
+$ns duplex-link-op $n2 $n0 color "purple"
+$ns duplex-link-op $n2 $n1 color "purple"
+$ns duplex-link-op $n5 $n4 color "purple"
+
+$ns duplex-link-op $n5 $n3 label "<12, 15>"
+$ns duplex-link-op $n2 $n0 label "<10, 15>"
+$ns duplex-link-op $n2 $n1 label "<10, 15>"
+$ns duplex-link-op $n5 $n4 label "<12, 15>"
+$ns duplex-link-op $n5 $n2 label "<10, 20>"
+
+$n0 shape circle
+$n1 shape circle
+$n2 shape hexagon
+$n3 shape square
+$n4 shape square
+$n5 shape hexagon
+
+$n0 color red
+$n1 color orange
+$n3 color green
+$n4 color blue
+
+$ns queue-limit $n5 $n2 8
+$ns duplex-link-op $n5 $n2 queuePos 0.5
+
+$ns color 1 Blue 
+$ns color 2 Red
+
+set tcp [new Agent/TCP]
+$ns attach-agent $n0 $tcp
+set sink [new Agent/TCPSink]
+$ns attach-agent $n3 $sink
+$ns connect $tcp $sink
+$tcp set fid_ 1
+
+set ftp [new Application/FTP]
+$ftp attach-agent $tcp
+$ftp set type_ FTP
+
+set udp [new Agent/UDP]
+$ns attach-agent $n1 $udp
+set null [new Agent/Null]
+$ns attach-agent $n4 $null
+$ns connect $udp $null
+$udp set fid_ 2
+
+set cbr [new Application/Traffic/CBR]
+$cbr attach-agent $udp
+$cbr set type_ CBR
+$cbr set packet_size_ 1000
+$cbr set rate_ 1mb
+
+
+$ns rtmodel-at 3.0 down $n5 $n2
+$ns rtmodel-at 5.0 up $n5 $n2
+
+$ns at 0.5 "$cbr start"
+$ns at 1.5 "$ftp start"
+$ns at 9.5 "$ftp stop"
+$ns at 9.5 "$cbr stop"
+
+
+
+
+
+
+$ns at 10.0 "finish"
+$ns run
